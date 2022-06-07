@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>Exe</OutputType>
-    <StartupObject>DiamondsNet.Program</StartupObject>
+    <StartupObject>DiamondsAPI.Program</StartupObject>
   </PropertyGroup>
 
 

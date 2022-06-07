@@ -1,6 +1,6 @@
 using System;
 
-namespace DiamondsNet
+namespace DiamondsAPI
 {
     public class WeatherForecast
     {
