@@ -1,6 +1,8 @@
+using DiamondsAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,12 +32,14 @@ namespace DiamondsAPI
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
-
+            
+            services.AddDbContext<DiamondContext>(opt =>
+              opt.UseInMemoryDatabase("DiamondList"));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DiamondsAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DiamondAPI", Version = "v1" });
             });
         }
 

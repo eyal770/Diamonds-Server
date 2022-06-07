@@ -2,6 +2,7 @@
 {
     public class Diamond
     {
+        public long Id { get; set; }
         public string Shape { get; set; }
         public decimal Size { get; set; }
         public string Color { get; set; }
