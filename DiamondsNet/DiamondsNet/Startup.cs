@@ -33,10 +33,10 @@ namespace DiamondsAPI
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
 
-            services.AddDbContext<DiamondContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:DiamondsDB"]));
+            //services.AddDbContext<DiamondContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:DiamondsDB"]));
 
-            //services.AddDbContext<DiamondContext>(opt =>
-            //  opt.UseInMemoryDatabase("DiamondList"));
+            services.AddDbContext<DiamondContext>(opt =>
+              opt.UseInMemoryDatabase("DiamondsDB"));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
