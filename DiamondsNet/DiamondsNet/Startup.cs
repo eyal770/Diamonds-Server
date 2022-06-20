@@ -28,9 +28,12 @@ namespace DiamondsAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddCors(c =>
+            services.AddCors(options =>
             {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
             });
 
             //services.AddDbContext<DiamondContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:DiamondsDB"]));
@@ -57,6 +60,8 @@ namespace DiamondsAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
